@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Final Project</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Style -->
+  <link rel="stylesheet" href="./assets/style/style.css">
+
+  <!-- Style -->
+
+  <!-- BootStrap -->
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- BootStrap -->
+  <!-- BootStrap icons -->
+  <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <!-- BootStrap icons -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header class=" header sticky-top w-100 mb-3 mb-md-5">
+    <div class="container bg-light-subtle rounded-bottom-1 py-lg-2 shadow">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-5 fw-bolder" href="#">FaceBook</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+            </ul>
+            <div class="buttons d-flex align-items-center justify-content-lg-end gap-2 mt-sm-2 mt-lg-0 w-100"
+              id="btns-group">
+              <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModel"
+                data-bs-whatever="@mdo" id="login-button">Login</button>
+              <button class="btn btn-outline-success ">Register</button>
+            </div>
+            <div id="logout-btn"
+              class="hidden d-flex align-items-center justify-content-lg-end gap-2 mt-sm-2 mt-lg-0 w-100">
+              <button class="btn btn-outline-danger" id="logout">Logout</button>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <!--? Login Model -->
+  <div class="modal fade" id="loginModel" tabindex="-1" aria-labelledby="loginModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="loginModelLabel">Login</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off">
+            <div class="mb-3">
+              <label for="username" class="col-form-label">username:</label>
+              <input type="text" class="form-control" id="username">
+            </div>
+            <div class="mb-3">
+              <label for="login-password" class="col-form-label">Password:</label>
+              <input type="password" class="form-control" id="login-password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="login-btn" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--? \\ Login Model // -->
+
+  <!--? Success alert -->
+  <div class="alert alert-success w-50 d-none " id="success-alert" role="alert">
+    user Logged successfully
+  </div>
+  <!--? Success alert -->
+
+  <!--! Logout alert -->
+  <div class="alert alert-danger  w-50 d-none " id="logout-alert" role="alert">
+    user Logout successfully
+  </div>
+  <!--! Logout alert -->
+
+  <!-- main content -->
+  <article class="main-section container row mx-auto">
+    <!-- Posts -->
+    <div class="posts col-9 mx-auto" id="posts">
+      <!-- Post -->
+      <!-- Post -->
+
+    </div>
+    <!-- Posts -->
+  </article>
+  <!-- main content -->
+  <button class="btn btn-primary rounded-pill py-2 " id="add"><i class="bi bi-plus"></i></button>
+  <!-- Axios -->
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <!-- Axios -->
+  <script src="./assets/script/app.js"></script>
+</body>
+
+</html>
