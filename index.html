@@ -23,8 +23,8 @@
 
 <body>
   <!-- Header -->
-  <header class=" header sticky-top w-100 mb-3 mb-md-5">
-    <div class="container bg-light-subtle rounded-bottom-1 py-lg-2 shadow">
+  <header class=" header sticky-top w-100 mb-3 mb-md-5 bg-light shadow ">
+    <div class="container -subtle rounded-bottom-1 py-lg-2 ">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand fs-5 fw-bolder" href="#">FaceBook</a>
@@ -45,10 +45,15 @@
               id="btns-group">
               <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModel"
                 data-bs-whatever="@mdo" id="login-button">Login</button>
-              <button class="btn btn-outline-success ">Register</button>
+              <button class="btn btn-outline-success" data-bs-toggle="modal"
+                data-bs-target="#registerModel">Register</button>
             </div>
             <div id="logout-btn"
               class="hidden d-flex align-items-center justify-content-lg-end gap-2 mt-sm-2 mt-lg-0 w-100">
+              <div class="d-flex align-items-center g-2">
+                <img src="" class="profile-image" id="profile-user-image" alt="profile image">
+                <p class="mb-0 fw-bold " id="user-name"></p>
+              </div>
               <button class="btn btn-outline-danger" id="logout">Logout</button>
             </div>
           </div>
@@ -59,7 +64,42 @@
     </div>
   </header>
 
-  <!--? Login Model -->
+  <!-- \\ ADD POST Model // -->
+  <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="createPostModel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="Model-titel">Create A New Post</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off">
+            <div class="mb-3">
+              <label for="body-for-post" class="col-form-label">Title</label>
+              <input type="text" class="form-control" id="body-for-post" value="This is a body for testing">
+            </div>
+            <div class="mb-3">
+              <label for="tittle" class="col-form-label">Body</label>
+              <input type="text" class="form-control" id="tittle" value="This is a tittle for testing">
+            </div>
+            <div class="mb-3">
+              <label for="formimage">Upload Your Image:</label>
+              <input class="form-control" type="file" id="formimage" accept="image/*">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="add-post" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- \\ ADD POST MODEL // -->
+
+  <!-- -------------------------------------------------------------------------------------------------------------------------------------- -->
+  <!-- \\ Login Model // -->
   <div class="modal fade" id="loginModel" tabindex="-1" aria-labelledby="loginModelLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -71,11 +111,11 @@
           <form autocomplete="off">
             <div class="mb-3">
               <label for="username" class="col-form-label">username:</label>
-              <input type="text" class="form-control" id="username">
+              <input type="text" class="form-control" id="username" value="aa5">
             </div>
             <div class="mb-3">
               <label for="login-password" class="col-form-label">Password:</label>
-              <input type="password" class="form-control" id="login-password">
+              <input type="password" class="form-control" id="login-password" value="123456d">
             </div>
           </form>
         </div>
@@ -86,17 +126,59 @@
       </div>
     </div>
   </div>
-  <!--? \\ Login Model // -->
+  <!-- \\ Login Model // -->
+
+  <!-- -------------------------------------------------------------------------------------------------------------------------------------- -->
+
+  <!--\\ Register Model // -->
+  <div class="modal fade" id="registerModel" tabindex="-1" aria-labelledby="registerModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="registerModelLabel">Register A New User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off">
+            <div class="mb-3">
+              <label for="register-name" class="col-form-label">Name</label>
+              <input type="text" class="form-control" id="register-name">
+            </div>
+            <div class="mb-3">
+              <label for="register-username" class="col-form-label">Username</label>
+              <input type="text" class="form-control" id="register-username">
+            </div>
+            <div class="mb-3">
+              <label for="register-image">Upload Your Image</label>
+              <input class="form-control" type="file" id="register-image" accept="image/*">
+            </div>
+            <div class="mb-3">
+              <label for="register-email" class="col-form-label">email</label>
+              <input type="email" class="form-control" id="register-email">
+            </div>
+            <div class="mb-3">
+              <label for="register-password" class="col-form-label">Password</label>
+              <input type="password" class="form-control" id="register-password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="register-btn" class="btn btn-primary">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- \\ Register Model // -->
 
   <!--? Success alert -->
-  <div class="alert alert-success w-50 d-none " id="success-alert" role="alert">
-    user Logged successfully
+  <div class="alert alert-success alert-dismissible fade show w-50 d-none " id="success-alert" role="alert">
+
   </div>
   <!--? Success alert -->
 
   <!--! Logout alert -->
-  <div class="alert alert-danger  w-50 d-none " id="logout-alert" role="alert">
-    user Logout successfully
+  <div class="alert alert-danger alert-dismissible fade show  w-50 d-none " id="logout-alert" role="alert">
   </div>
   <!--! Logout alert -->
 
@@ -110,8 +192,10 @@
     </div>
     <!-- Posts -->
   </article>
-  <!-- main content -->
-  <button class="btn btn-primary rounded-pill py-2 " id="add"><i class="bi bi-plus"></i></button>
+  <!-- --!  main content ---! -->
+  <button class="btn btn-primary rounded-pill py-2" data-bs-toggle="modal" data-bs-target="#addPost" id="add"><i
+      class="bi bi-plus"></i></button>
+
   <!-- Axios -->
   <script src="./node_modules/axios/dist/axios.min.js"></script>
   <!-- Axios -->

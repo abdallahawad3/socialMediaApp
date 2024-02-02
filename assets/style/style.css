@@ -8,6 +8,20 @@ html {
   overflow-x: hidden;
 } */
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb {
+  background: #8664ff;
+}
 
 body {
   background-color: #f0ecff !important;
@@ -21,7 +35,8 @@ a:focus  {
 
 /* Main section */
 
-.main-section .card .card-header img {
+.main-section .card .card-header img,
+.profile-image  {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -34,6 +49,11 @@ a:focus  {
   bottom: 20px;
   right: 50px;
   display: none;
+  box-shadow: 0 10px 10px rgba(0,0,0,.3) !important;
+}
+
+#add i {
+  font-size: 20px !important;
 }
 
 #logout-btn.hidden {
@@ -48,26 +68,36 @@ a:focus  {
   display: none !important;
 }
 
-#success-alert.success-animation,
-#logout-alert.success-animation {
-  display: block !important;
+#success-alert,
+#logout-alert {
+  display: none !important;
   position: fixed;
-  top: 0;
-  right: -100%;
+  bottom: 0;
+  right: 20px;
   z-index: 9999;
   width: 300px !important;
-  animation: success .5s linear  forwards ;
 }
 
-@keyframes success {
-  0%{right: -100%;}
-  100%{right: 20px;}
+.profile-image {
+  width: 40px;
+  height: 40px;
 }
 
-#success-alert.hidden {
-  display: none !important;
+.loading-spinner {
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #9b34db;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
 }
 
-#logout-alert.hidden {
-  display: none !important;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
