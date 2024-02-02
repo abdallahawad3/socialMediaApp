@@ -2,11 +2,9 @@
 <html lang="en">
 
 <head>
-  <title>Final Project</title>
-  <!-- Required meta tags -->
+  <title>post details</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
   <!-- Style -->
   <link rel="stylesheet" href="./assets/style/style.css">
 
@@ -64,40 +62,7 @@
     </div>
   </header>
 
-  <!-- \\ ADD POST Model // -->
-  <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="createPostModel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="Model-titel">Create A New Post</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form autocomplete="off">
-            <div class="mb-3">
-              <label for="body-for-post" class="col-form-label">Title</label>
-              <input type="text" class="form-control" id="body-for-post" value="This is a body for testing">
-            </div>
-            <div class="mb-3">
-              <label for="tittle" class="col-form-label">Body</label>
-              <input type="text" class="form-control" id="tittle" value="This is a tittle for testing">
-            </div>
-            <div class="mb-3">
-              <label for="formimage">Upload Your Image:</label>
-              <input class="form-control" type="file" id="formimage" accept="image/*">
-            </div>
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="add-post" class="btn btn-primary">Add</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- \\ ADD POST MODEL // -->
-
+  <!-- MODELS -->
   <!-- -------------------------------------------------------------------------------------------------------------------------------------- -->
   <!-- \\ Login Model // -->
   <div class="modal fade" id="loginModel" tabindex="-1" aria-labelledby="loginModelLabel" aria-hidden="true">
@@ -111,11 +76,11 @@
           <form autocomplete="off">
             <div class="mb-3">
               <label for="username" class="col-form-label">username:</label>
-              <input type="text" class="form-control" id="username" value="Abdullah3">
+              <input type="text" class="form-control" id="username" value="aa5">
             </div>
             <div class="mb-3">
               <label for="login-password" class="col-form-label">Password:</label>
-              <input type="password" class="form-control" id="login-password" value="123456a">
+              <input type="password" class="form-control" id="login-password" value="123456d">
             </div>
           </form>
         </div>
@@ -170,38 +135,25 @@
     </div>
   </div>
   <!-- \\ Register Model // -->
-
+  <!-- ALERTS -->
   <!--? Success alert -->
-  <div class="alert alert-success alert-dismissible fade show w-50 d-none " id="success-alert" role="alert">
-
-  </div>
+  <div class="alert alert-success alert-dismissible fade show w-50 d-none " id="success-alert" role="alert"></div>
   <!--? Success alert -->
-
   <!--! danger alert -->
-  <div class="alert alert-danger alert-dismissible fade show  w-50 d-none " id="logout-alert" role="alert">
-  </div>
+  <div class="alert alert-danger alert-dismissible fade show  w-50 d-none " id="logout-alert" role="alert"></div>
   <!--! danger alert -->
+  <!-- ALERTS -->
 
-  <!-- main content -->
-  <article class="main-section container row mx-auto">
-    <!-- Posts -->
-    <div class="posts col-9 mx-auto" id="posts">
-      <!-- Post -->
-      <!-- Post -->
+  <!-- ========================== main content ========================== -->
 
-    </div>
-    <!-- Posts -->
+  <article class="main-section container row mx-auto" id="main-section">
   </article>
-  <!-- --!  main content ---! -->
-  <button class="btn btn-primary rounded-pill py-2" data-bs-toggle="modal" data-bs-target="#addPost" id="add">
-    <i class="bi bi-plus"></i>
-  </button>
 
   <!-- Axios -->
   <script src="./node_modules/axios/dist/axios.min.js"></script>
   <!-- Axios -->
   <script src="./assets/script/mainLogic.js"></script>
-  <script src="./assets/script/app.js"></script>
+  <script src="./assets/script/pageDetails.js"></script>
 </body>
 
 </html>

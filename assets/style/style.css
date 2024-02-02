@@ -3,10 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* 
+
 html {
   overflow-x: hidden;
-} */
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -100,4 +100,8 @@ a:focus  {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.card {
+  cursor: pointer;
 }
