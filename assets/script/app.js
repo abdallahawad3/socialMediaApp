@@ -1,3 +1,4 @@
+// DOM elements
 let posts = document.getElementById("posts");
 const baseUrl = "https://tarmeezacademy.com/api/v1/"
 const addPostButton = document.getElementById("add");
@@ -7,16 +8,20 @@ const LoginButton = document.getElementById("login-btn");
 const logoutButton = document.getElementById("logout-btn");
 const logout = document.getElementById("logout");
 const LoginButtonsGroup = document.getElementById("btns-group");
+
+// Initial setup and data fetch
 fetchAllPosts();
 
+// Pagination and loading variables //
 let currentPage = 1;
 let lastPage;
 let isLoading = false;
 
-
+// Event listener for scroll events
 window.addEventListener("scroll", () => {
+  // Check if the user has reached the end of the page
   const endOfPage = window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
-
+  // Trigger data fetch when conditions are met
   if (endOfPage && currentPage < lastPage && !isLoading) {
     isLoading = true;
 
@@ -39,7 +44,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Function to fetch all data and send to displayAllPosts() function
+// Create a function that retrieves all data and then passes it to the displayAllPosts() function.
 async function fetchAllPosts(page) {
   try {
     let request = fetch(`${baseUrl}posts?limit=10&page=${page}`);
@@ -52,7 +57,7 @@ async function fetchAllPosts(page) {
   }
 }
 
-// Function to display all data for all users into html page
+// Define a function to display all user data on the HTML page
 function displayAllPosts(object) {
   let temp = "";
   object.forEach(element => {
@@ -91,7 +96,7 @@ function displayAllPosts(object) {
 
 };
 
-// Function to login the user //
+// Function to facilitate user login
 async function login(username, pass) {
   let response = await fetch(`${baseUrl}login`, {
     method: "POST",
@@ -119,7 +124,7 @@ async function login(username, pass) {
 }
 
 
-// Function to send data for Register function to create ( post request ) and Register the new user //
+// Function to send data for registration using a POST request and create a new user
 RegisterButton.addEventListener("click", () => {
   let name = document.getElementById("register-name").value;
   let username = document.getElementById("register-username").value;
@@ -130,7 +135,7 @@ RegisterButton.addEventListener("click", () => {
 });
 
 
-// Function to Register the new user //
+// Function to register a new user
 async function Register(name, username, image, email, password) {
   try {
 
@@ -166,21 +171,21 @@ async function Register(name, username, image, email, password) {
   }
 }
 
-// Function to send data for login function to create post request and login the user //
+// Function to send data for login using a POST request and authenticate the user
 LoginButton.addEventListener("click", () => {
   let username = document.getElementById("username").value;
   let password = document.getElementById("login-password").value;
   login(username, password);
 });
 
-// Function to hide login model after login success //
+// Function to hide the login modal after successful user login //
 function hideModel(modelName) {
   let model = document.getElementById(modelName);
   let modelInstance = bootstrap.Modal.getInstance(model);
   modelInstance.hide();
 }
 
-// Function to setup ui //
+// Function to set up the user interface
 function setUiAfterLoginAndRegister() {
   let token = window.localStorage.getItem("token");
   let data = JSON.parse(localStorage.getItem("user"));
@@ -198,18 +203,15 @@ function setUiAfterLoginAndRegister() {
   }
 }
 
-// Function to logout user and setup ui //
+// Function to log out the user and set up the user interface
 logout.addEventListener("click", () => {
-  Logout();
-});
-
-function Logout() {
   window.localStorage.removeItem("token");
   window.localStorage.removeItem("user");
   showDangerAlert("You have been logged out !");
   setUiAfterLoginAndRegister();
-}
+});
 
+// Function to display a success alert with a given message
 function showSuccessAlert(message) {
   const successAlert = document.getElementById("success-alert");
   let temp = `
@@ -223,6 +225,7 @@ function showSuccessAlert(message) {
   }, 4000);
 }
 
+// Function to display a danger alert with a given message
 function showDangerAlert(message) {
   const logout = document.getElementById("logout-alert");
   let temp = `
@@ -236,30 +239,38 @@ function showDangerAlert(message) {
   }, 4000);
 }
 
+// Function to show data from local storage and set up UI after login or registration
 function showData() {
   let data = JSON.parse(window.localStorage.getItem("user"));
   if (data) {
     setUiAfterLoginAndRegister();
   }
 }
-
 showData();
 
-addPostBtn.addEventListener("click", () => {
 
+// Event listener for the addPostBtn click
+addPostBtn.addEventListener("click", () => {
+  // Retrieving values from input fields
   let title = document.getElementById("tittle").value;
   let body = document.getElementById("body-for-post").value;
   let image = document.getElementById("formimage").files[0];
+  // Calling the addNewPost function with the provided data
   addNewPost(title, body, image);
 });
 
+// Function to add a new post
 async function addNewPost(body, title, image) {
+
+  // Creating a FormData object to handle file upload
   const formData = new FormData();
   formData.append('body', body);
   formData.append('title', title);
   formData.append('image', image);
+  // Retrieving the user token from local storage
   let token = window.localStorage.getItem("token");
   try {
+    // Sending a POST request to add a new post
     const response = await fetch("https://tarmeezacademy.com/api/v1/posts", {
       method: "POST",
       headers: {
@@ -268,7 +279,7 @@ async function addNewPost(body, title, image) {
       },
       body: formData,
     });
-
+    // Handling the response
     if (response.ok) {
       const contentType = response.headers.get("Content-Type");
       if (contentType && contentType.includes("application/json")) {
@@ -278,6 +289,7 @@ async function addNewPost(body, title, image) {
         showSuccessAlert("You Added Post Successfully!");
         fetchAllPosts();
       } else {
+        // Handling error response
         console.log(response);
         console.log("Unexpected response format");
       }
@@ -287,6 +299,7 @@ async function addNewPost(body, title, image) {
     }
 
   } catch (error) {
+    // Handling general error
     showDangerAlert("You must hhh");
   }
 
