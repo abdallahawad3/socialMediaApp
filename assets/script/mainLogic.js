@@ -5,7 +5,7 @@ const LoginButton = document.getElementById("login-btn");
 const logoutButton = document.getElementById("logout-btn");
 const logout = document.getElementById("logout");
 const LoginButtonsGroup = document.getElementById("btns-group");
-
+// const profileLink = document.getElementById("profileLink");
 // Function to facilitate user login
 async function login(username, pass) {
   let response = await fetch(`${baseUrl}login`, {
@@ -161,3 +161,8 @@ function showData() {
 }
 showData();
 
+function profileClicked() {
+  let user = JSON.parse(localStorage.getItem("user"));
+  window.localStorage.setItem("idOfUser", user.id);
+  window.location = "profile.html";
+}

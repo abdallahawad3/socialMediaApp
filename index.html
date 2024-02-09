@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-  <title>Final Project</title>
+  <title>Social media App</title>
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
+
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -27,7 +29,8 @@
     <div class="container -subtle rounded-bottom-1 py-lg-2 ">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand fs-5 fw-bolder" href="index.html">Logo</a>
+          <a class="navbar-brand fs-5 fw-bolder" href="index.html"><img src="logo.png" class="w-100"
+              style="width: 50px; height: 50px; cursor: pointer;" alt="Logo image"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,10 +38,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                <a class="nav-link active fw-bold" aria-current="page" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="profile.html">Profile</a>
+                <a class="nav-link fw-bold text-black" style="cursor: pointer;" onclick="profileClicked()">Profile</a>
               </li>
             </ul>
             <div class="buttons d-flex align-items-center justify-content-lg-end gap-2 mt-sm-2 mt-lg-0 w-100"
@@ -76,7 +79,6 @@
             <div class="mb-3">
               <label for="update-title" class="col-form-label">Title</label>
               <input type="text" class="form-control" id="update-title">
-              <!-- <input type="hidden" id="post-id" value=""> -->
             </div>
             <div class="mb-3">
               <label for="update-body" class="col-form-label">Body</label>
@@ -121,7 +123,7 @@
             <div class="mb-3">
               <label for="tittle" class="col-form-label">Title</label>
               <input type="text" class="form-control" id="tittle">
-              <input type="hidden" id="post-id" value="">
+              <input type="hidden" id="post-id">
             </div>
             <div class="mb-3">
               <label for="body-for-post" class="col-form-label">Body</label>
@@ -156,11 +158,11 @@
           <form autocomplete="off">
             <div class="mb-3">
               <label for="username" class="col-form-label">username:</label>
-              <input type="text" class="form-control" id="username" value="Abdullah3">
+              <input type="text" class="form-control" id="username">
             </div>
             <div class="mb-3">
               <label for="login-password" class="col-form-label">Password:</label>
-              <input type="password" class="form-control" id="login-password" value="123456a">
+              <input type="password" class="form-control" id="login-password">
             </div>
           </form>
         </div>
