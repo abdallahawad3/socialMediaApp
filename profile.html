@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>post details</title>
+  <title>Final Project</title>
+  <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
   <!-- Style -->
   <link rel="stylesheet" href="./assets/style/style.css">
 
@@ -62,8 +64,18 @@
     </div>
   </header>
 
-  <!-- MODELS -->
-  <!-- -------------------------------------------------------------------------------------------------------------------------------------- -->
+
+  <div id="head" class="head container col-8 mx-auto text-black mb-5">
+
+  </div>
+
+  <div class="col-8 mx-auto mb-lg-5 ps-4" id="author-name">
+
+  </div>
+
+  <div class="head container col-8 mx-auto text-black mb-5 w-100" id="allPosts">
+
+  </div>
   <!-- \\ Login Model // -->
   <div class="modal fade" id="loginModel" tabindex="-1" aria-labelledby="loginModelLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -76,11 +88,11 @@
           <form autocomplete="off">
             <div class="mb-3">
               <label for="username" class="col-form-label">username:</label>
-              <input type="text" class="form-control" id="username" value="aa5">
+              <input type="text" class="form-control" id="username" value="Abdullah3">
             </div>
             <div class="mb-3">
               <label for="login-password" class="col-form-label">Password:</label>
-              <input type="password" class="form-control" id="login-password" value="123456d">
+              <input type="password" class="form-control" id="login-password" value="123456a">
             </div>
           </form>
         </div>
@@ -135,26 +147,16 @@
     </div>
   </div>
   <!-- \\ Register Model // -->
-  <!-- ALERTS -->
+
   <!--? Success alert -->
   <div class="alert alert-success alert-dismissible fade show w-50 d-none " id="success-alert" role="alert"></div>
   <!--? Success alert -->
+
   <!--! danger alert -->
   <div class="alert alert-danger alert-dismissible fade show  w-50 d-none " id="logout-alert" role="alert"></div>
   <!--! danger alert -->
-  <!-- ALERTS -->
-
-  <!-- ========================== main content ========================== -->
-
-  <article class="main-section container row mx-auto" id="main-section">
-  </article>
-
-  <!-- Axios -->
-  <script src="./node_modules/axios/dist/axios.min.js"></script>
-  <!-- Axios -->
-  <!-- <script src="./assets/script/mainLogic.js"></script> -->
-  <script src="./assets/script/pageDetails.js"></script>
   <script src="./assets/script/mainLogic.js"></script>
+  <script src="./assets/script/profileScript.js"></script>
 </body>
 
 </html>

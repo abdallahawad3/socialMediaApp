@@ -2,7 +2,8 @@
 let posts = document.getElementById("posts");
 // const baseUrl = "https://tarmeezacademy.com/api/v1/"
 const addPostBtn = document.getElementById("add-post");
-let updatePostButton = document.getElementById("update-post");
+const updatePostButton = document.getElementById("update-post");
+const deletePostButton = document.getElementById("deletePostBtn");
 // Pagination and loading variables //
 let lastPage;
 let isLoading = false;
@@ -57,10 +58,10 @@ function displayAllPosts(object) {
   let editButtonContent = ``;
 
   object.forEach(element => {
-    if (currentUser.id === element.author.id) {
+    if (currentUser !== null && currentUser.id !== null && currentUser.id === element.author.id) {
       editButtonContent = `
         <button class = "btn btn-secondary p-1 px-2" onclick="editPost('${encodeURIComponent(JSON.stringify(element))}')" >EDIT</button>
-        <button class = "btn btn-danger p-1 px-2" >Delete</button>
+        <button class = "btn btn-danger p-1 px-2" onclick = "deletePost('${encodeURIComponent(JSON.stringify(element))}')">Delete</button>
       `
     } else {
       editButtonContent = ``;
@@ -68,7 +69,7 @@ function displayAllPosts(object) {
     temp = `
     <div class="card col-9 mx-auto shadow-lg mb-4">
     <div class="card-header d-flex align-items-center justify-content-between">
-      <div>
+      <div onclick = "showUserPosts(${element.author.id})">
         <img src="${typeof element.author.profile_image === 'string' ? element.author.profile_image : 'https://placehold.co/50'}" alt="User image">
         <span class="fw-bold">${typeof element.author.username == 'string' ? element.author.username : "UserName"}</span>
       </div>
@@ -229,4 +230,50 @@ async function updatePost(title, body, id) {
       window.location.reload();
     }, 500);
   }
+}
+
+function deletePost(object) {
+  let obj = JSON.parse(decodeURIComponent(object));
+  window.localStorage.setItem("deletePostId", obj.id)
+  let modal = document.getElementById("deletePostModel");
+  if (modal) {
+    let modalInstance = new bootstrap.Modal(modal);
+    modalInstance.show();
+  } else {
+    console.error("Modal element with ID 'updatePost' not found.");
+  }
+}
+
+deletePostButton.addEventListener("click", () => {
+  let postId = localStorage.getItem("deletePostId");
+  deletePostEver(postId);
+});
+
+async function deletePostEver(id) {
+  let token = localStorage.getItem("token");
+  let response = await fetch(`${baseUrl}posts/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify(
+      {
+        "body": "hello sdffsdsfds"
+      })
+  });
+
+  if (response.ok) {
+    hideModel("deletePostModel");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+    showSuccessAlert("The post are deleted successfully");
+  }
+}
+
+function showUserPosts(idOfUser) {
+  window.localStorage.setItem("idOfUser", idOfUser);
+  window.location = "profile.html";
 }

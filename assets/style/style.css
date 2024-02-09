@@ -102,6 +102,10 @@ a:focus  {
   100% { transform: rotate(360deg); }
 }
 
-.card {
+.card .card-body {
+  cursor: pointer;
+}
+
+.card-header > div {
   cursor: pointer;
 }

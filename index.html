@@ -35,10 +35,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="profile.html">Profile</a>
               </li>
             </ul>
             <div class="buttons d-flex align-items-center justify-content-lg-end gap-2 mt-sm-2 mt-lg-0 w-100"
@@ -92,6 +92,22 @@
     </div>
   </div>
   <!-- // Update PostModel -->
+  <!-- Delete Model -->
+  <div class="modal" id="deletePostModel" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Are you sure to delete the post?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="deletePostBtn" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete Model -->
   <!-- \\ ADD POST Model // -->
   <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="createPostModel" aria-hidden="true">
     <div class="modal-dialog">
@@ -201,14 +217,11 @@
   <!-- \\ Register Model // -->
 
   <!--? Success alert -->
-  <div class="alert alert-success alert-dismissible fade show w-50 d-none " id="success-alert" role="alert">
-
-  </div>
+  <div class="alert alert-success alert-dismissible fade show w-50 d-none " id="success-alert" role="alert"></div>
   <!--? Success alert -->
 
   <!--! danger alert -->
-  <div class="alert alert-danger alert-dismissible fade show  w-50 d-none " id="logout-alert" role="alert">
-  </div>
+  <div class="alert alert-danger alert-dismissible fade show  w-50 d-none " id="logout-alert" role="alert"></div>
   <!--! danger alert -->
 
   <!-- main content -->
