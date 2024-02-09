@@ -2,7 +2,7 @@
 let posts = document.getElementById("posts");
 // const baseUrl = "https://tarmeezacademy.com/api/v1/"
 const addPostBtn = document.getElementById("add-post");
-
+let updatePostButton = document.getElementById("update-post");
 // Pagination and loading variables //
 let lastPage;
 let isLoading = false;
@@ -53,16 +53,30 @@ async function fetchAllPosts(page) {
 // Define a function to display all user data on the HTML page
 function displayAllPosts(object) {
   let temp = "";
+  let currentUser = JSON.parse(window.localStorage.getItem("user"));
+  let editButtonContent = ``;
+
   object.forEach(element => {
+    if (currentUser.id === element.author.id) {
+      editButtonContent = `
+        <button class = "btn btn-secondary p-1 px-2" onclick="editPost('${encodeURIComponent(JSON.stringify(element))}')" >EDIT</button>
+        <button class = "btn btn-danger p-1 px-2" >Delete</button>
+      `
+    } else {
+      editButtonContent = ``;
+    }
     temp = `
-    <div class="card col-9 mx-auto shadow-lg mb-4" onclick="postClicked(${element.id})">
-    <div class="card-header">
-      <img
-        src="${typeof element.author.profile_image === 'string' ? element.author.profile_image : 'https://placehold.co/50'}"
-        alt="User image">
-      <span class="fw-bold">${typeof element.author.username == 'string' ? element.author.username : "UserName"}</span>
+    <div class="card col-9 mx-auto shadow-lg mb-4">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <div>
+        <img src="${typeof element.author.profile_image === 'string' ? element.author.profile_image : 'https://placehold.co/50'}" alt="User image">
+        <span class="fw-bold">${typeof element.author.username == 'string' ? element.author.username : "UserName"}</span>
+      </div>
+      <div>
+        ${editButtonContent}
+      </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" onclick="postClicked(${element.id})">
       <div class="card-image">
         <img class="w-100" src="${typeof element.image == 'string' ? element.image : "https://placehold.co/600x400"}"
           alt="main image">
@@ -99,13 +113,13 @@ addPostBtn.addEventListener("click", () => {
   addNewPost(title, body, image);
 });
 
-// Function to add a new post
-async function addNewPost(body, title, image) {
 
+// Function to add a new post
+async function addNewPost(title, body, image) {
   // Creating a FormData object to handle file upload
   const formData = new FormData();
-  formData.append('body', body);
   formData.append('title', title);
+  formData.append('body', body);
   formData.append('image', image);
   // Retrieving the user token from local storage
   let token = window.localStorage.getItem("token");
@@ -123,8 +137,6 @@ async function addNewPost(body, title, image) {
     if (response.ok) {
       const contentType = response.headers.get("Content-Type");
       if (contentType && contentType.includes("application/json")) {
-        let data = await response.json();
-        console.log(data);
         hideModel("addPost");
         showSuccessAlert("You Added Post Successfully!");
         setTimeout(() => {
@@ -169,4 +181,52 @@ function hideLoadingIndicator() {
 function postClicked(id) {
   window.localStorage.setItem("id", id);
   window.location = "postDetails.html";
+}
+
+function editPost(object) {
+  let obj = JSON.parse(decodeURIComponent(object));
+  document.getElementById("update-body").value = obj.body;
+  document.getElementById("update-title").value = obj.title;
+  window.localStorage.setItem("postId", obj.id)
+  let modal = document.getElementById("updatePost");
+  if (modal) {
+    let modalInstance = new bootstrap.Modal(modal);
+    modalInstance.show();
+  } else {
+    console.error("Modal element with ID 'updatePost' not found.");
+  }
+}
+
+updatePostButton.addEventListener("click", () => {
+  let body = document.getElementById("update-body").value;
+  let title = document.getElementById("update-title").value;
+  let postId = localStorage.getItem("postId");
+  updatePost(title, body, postId);
+})
+
+//Function to update post 
+
+async function updatePost(title, body, id) {
+  // console.log(title, body, id);
+  let token = window.localStorage.getItem("token");
+  let response = await fetch(`${baseUrl}posts/${id}`, {
+    method: "PUT",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      body: body,
+      title: title
+    })
+  });
+
+  if (response.ok) {
+    let data = await response.json();
+    hideModel("updatePost");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  }
 }

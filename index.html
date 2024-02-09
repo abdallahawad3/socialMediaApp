@@ -27,7 +27,7 @@
     <div class="container -subtle rounded-bottom-1 py-lg-2 ">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand fs-5 fw-bolder" href="index.html">FaceBook</a>
+          <a class="navbar-brand fs-5 fw-bolder" href="index.html">Logo</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -63,24 +63,53 @@
 
     </div>
   </header>
-
-  <!-- \\ ADD POST Model // -->
-  <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="createPostModel" aria-hidden="true">
+  <!-- // Update Post model -->
+  <div class="modal fade" id="updatePost" tabindex="-1" aria-labelledby="updatePostModel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="Model-titel">Create A New Post</h1>
+          <h1 class="modal-title fs-5" id="Model-title">Update The Post</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form autocomplete="off">
             <div class="mb-3">
-              <label for="body-for-post" class="col-form-label">Title</label>
-              <input type="text" class="form-control" id="body-for-post" value="This is a body for testing">
+              <label for="update-title" class="col-form-label">Title</label>
+              <input type="text" class="form-control" id="update-title">
+              <!-- <input type="hidden" id="post-id" value=""> -->
             </div>
             <div class="mb-3">
-              <label for="tittle" class="col-form-label">Body</label>
-              <input type="text" class="form-control" id="tittle" value="This is a tittle for testing">
+              <label for="update-body" class="col-form-label">Body</label>
+              <input type="text" class="form-control" id="update-body">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="update-post" class="btn btn-primary">update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- // Update PostModel -->
+  <!-- \\ ADD POST Model // -->
+  <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="createPostModel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="Model-title">Create A New Post</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off">
+            <div class="mb-3">
+              <label for="tittle" class="col-form-label">Title</label>
+              <input type="text" class="form-control" id="tittle">
+              <input type="hidden" id="post-id" value="">
+            </div>
+            <div class="mb-3">
+              <label for="body-for-post" class="col-form-label">Body</label>
+              <input type="text" class="form-control" id="body-for-post">
             </div>
             <div class="mb-3">
               <label for="formimage">Upload Your Image:</label>

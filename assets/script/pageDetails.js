@@ -99,9 +99,3 @@ async function addComment() {
   }
 }
 
-
-if (token) {
-  const input = document.querySelector("[data-input]");
-  console.log(input);
-  console.log("DD");
-}
