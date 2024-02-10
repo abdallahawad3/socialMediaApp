@@ -67,7 +67,7 @@ function displayAllPosts(object) {
       editButtonContent = ``;
     }
     temp = `
-    <div class="card col-9 mx-auto shadow-lg mb-4">
+    <div class="card col-12 col-lg-9 mx-auto shadow-lg mb-4">
     <div class="card-header d-flex align-items-center justify-content-between">
       <div onclick = "showUserPosts(${element.author.id})">
         <img src="${typeof element.author.profile_image === 'string' ? element.author.profile_image : 'https://placehold.co/50'}" alt="User image">

@@ -35,9 +35,9 @@ function displayPost(data) {
     `
   });
   let temp = `
-  <div class="posts col-8 mx-auto " id="posts">
+  <div class="posts container-fluid col-lg-8 container-md mx-auto " id="posts">
       <h1 class="post-author my-5 bg-success-subtle text-black rounded-1 p-4">
-        <span class="fw-bold text-danger">${data.author.username}'s</span> post
+        <span class="text-danger container-fluid">${data.author.username}'s</span> post
       </h1>
       <div class="card shadow-lg mb-4">
         <div class=" card-header">

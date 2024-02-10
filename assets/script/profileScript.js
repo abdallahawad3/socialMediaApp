@@ -20,7 +20,7 @@ async function mainInfo() {
 mainInfo();
 function headerInfo(object) {
   let temp = `
-    <div class="posts bg-white shadow-sm p-4 rounded-2 d-flex justify-content-between align-items-center gap-5"
+    <div class="posts bg-white shadow-sm p-4 rounded-2 d-flex  justify-content-md-between align-items-start align-items-md-center gap-5 flex-column flex-md-row justify-content-md-between align-content-start"
       style="border: 1px solid #dcdada;" id="posts">
       <div class="left d-flex align-items-center gap-4 w-50">
         <img src="${typeof object.profile_image === "string" ? object.profile_image : 'https://picsum.photos/200/300'}" class="rounded-pill" style="width: 150px; height: 150px;"
@@ -38,7 +38,7 @@ function headerInfo(object) {
     </div>
   `
   let temp2 = `
-      <h2> ${object.username}</h2> 
+      <h2> ${object.username}'s Posts</h2> 
   `
   mainHead.innerHTML = temp;
   authorName.innerHTML = temp2;
@@ -65,7 +65,7 @@ function displayAllUserPosts(object) {
   let temp = ``;
   object.forEach(element => {
     temp = `
-    <div class="card col-9 mx-auto shadow-lg mb-4">
+    <div class="card container-fluid col-lg-8 container-md mx-auto shadow-lg my-4">
       <div class="card-header d-flex align-items-center justify-content-between">
         <div>
           <img src="${typeof element.author.profile_image == "string" ? element.author.profile_image : 'https://picsum.photos/200/300'}" style="width: 50px; border-radius: 50%; padding: 2px; border: 2px solid gainsboro;" alt="User image">
